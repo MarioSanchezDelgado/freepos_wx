@@ -12,7 +12,6 @@ class ImageCanvas: public wxPanel
 public:
   ImageCanvas(wxWindow *parent, const wxPoint &pos, const wxSize& size);
   virtual ~ImageCanvas();
-
   
   void OnPaint(wxPaintEvent& WXUNUSED(event));
 private:

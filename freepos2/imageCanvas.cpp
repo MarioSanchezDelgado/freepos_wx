@@ -18,9 +18,9 @@ ImageCanvas::ImageCanvas(wxWindow *parent, const wxPoint &pos, const wxSize &siz
 {
   //SetBackgroundColour(* wxWHITE);
   
-  wxImage image;
+  wxImage image = wxImage();
 
-  if ( !image.LoadFile( wxT("./logo.png")) )
+  if ( !image.LoadFile( wxString("./logo.png"), wxBITMAP_TYPE_PNG, 0) )
   {
     wxLogError(wxT("Can't load PNG image"));
   }
@@ -29,7 +29,7 @@ ImageCanvas::ImageCanvas(wxWindow *parent, const wxPoint &pos, const wxSize &siz
     picFromFile = wxBitmap( image.Scale(150, 150, wxIMAGE_QUALITY_HIGH));
   }
   
-  //image.Destroy();
+  image.Destroy();
 }
 
 ImageCanvas::~ImageCanvas()

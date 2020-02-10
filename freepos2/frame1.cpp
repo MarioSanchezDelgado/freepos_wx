@@ -1,5 +1,4 @@
 #include "frame1.h"
-#include "cashierFrame.h"
 #include "statusPanel.h"
 #include "imageCanvas.h"
 
@@ -26,6 +25,9 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size) 
 	ImageCanvas* m_canvas = new ImageCanvas(this, wxPoint(mSize.GetWidth()/2 - 75,30), wxSize(200,200) );
   mStPanel = new StatusPanel(this, wxSize(mSize.GetWidth(), 30));
   mStPanel->Show();
+	SetBackgroundColour(wxColour("SPRING GREEN"));
+	ShowFullScreen( true, wxFULLSCREEN_NOMENUBAR);
+	Show(true);
 }
 
 void MyFrame::OnExit(wxCommandEvent& event)
@@ -46,13 +48,14 @@ void MyFrame::OnHello(wxCommandEvent& event)
 
 void MyFrame::OnKeyDown(wxKeyEvent& event)
 {
-	 SetStatusText(wxString::Format("KeyDown: %i\n", (int)event.GetKeyCode()));
+/*	 SetStatusText(wxString::Format("KeyDown: %i\n", (int)event.GetKeyCode()));
   if ( ((wxKeyEvent&)event).GetKeyCode() == 67 )
   {
     CashierFrame* cashierFrm = new CashierFrame( "Cashier Screen", wxPoint(50, 50), wxSize(450, 340) );
     cashierFrm->Show(TRUE);
     Close(true);
   }
+*/
   event.Skip();	
 }
 

@@ -1,9 +1,10 @@
 CXX = g++
-CFLAGS=`wx-config --cxxflags` 
-#CFLAGS=-g `wx-config --cxxflags` 
+#CFLAGS=`wx-config --cxxflags` 
+CFLAGS=-g -ggdb `wx-config --cxxflags` 
 
 PROGRAM = freepos
-SOURCES = imageCanvas.cpp \
+SOURCES = salesFrame.cpp \
+					imageCanvas.cpp \
 					cashierFrame.cpp \
           statusPanel.cpp \
           frame1.cpp \
@@ -20,7 +21,7 @@ OBJECTS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 all:    $(PROGRAM)
 
 $(PROGRAM):$(OBJECTS)
-	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --libs`
+	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --libs std,richtext`
 
 clean:
 	rm -f *.o $(PROGRAM)
