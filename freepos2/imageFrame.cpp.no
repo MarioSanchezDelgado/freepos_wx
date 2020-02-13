@@ -1,7 +1,0 @@
-#include "imageCanvas.h"
-
-
-class ImageFrame: public wxFrame
-{
-	ImageFrame();
-	

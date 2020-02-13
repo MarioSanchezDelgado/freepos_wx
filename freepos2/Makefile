@@ -1,21 +1,18 @@
 CXX = g++
 #CFLAGS=`wx-config --cxxflags` 
-CFLAGS=-g -ggdb `wx-config --cxxflags` 
+BIN=./bin
+SRC=./src
+INCL=./incl
+CFLAGS=-g -ggdb `wx-config --cxxflags` -I$(INCL)
 
-PROGRAM = freepos
-SOURCES = salesFrame.cpp \
-					imageCanvas.cpp \
-					cashierFrame.cpp \
-          statusPanel.cpp \
-          frame1.cpp \
-          main.cpp
-
-OBJECTS := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+PROGRAM = $(BIN)/freepos
+SOURCES := $(wildcard $(SRC)/*.cpp) 
+OBJECTS := $(patsubst $(SRC)/%.cpp,$(BIN)/%.o,$(wildcard $(SRC)/*.cpp))
 
 # implementation
 .SUFFIXES: .o .cpp
 
-%.o: %.cpp
+$(BIN)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CFLAGS) -o $@ -c $<
 
 all:    $(PROGRAM)
